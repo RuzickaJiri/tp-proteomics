@@ -37,13 +37,13 @@ Cette partie du TP est découpée en 4 grandes parties avec pour chacune des par
 ##### En quoi consiste l’approche Shotgun proteomics?
 
 ```
-
+Une approche bottom-up de la protéomique par spéctrométrie de masse.
 ```
 
 ##### Quel est l’objectif de cette approche ?
 
 ```
-
+Identifier des échantillons n'ayant pas la même origine (conditions différentes,...) dans le but d'identifier les bio-marquers.
 ```
 
 #### Procédure
@@ -59,13 +59,13 @@ Cette partie du TP est découpée en 4 grandes parties avec pour chacune des par
 ##### L’identification des protéines/ peptides se réalise grâce à une base de données de protéines. Quelle comparaison va être effectuée?
 
 ```
-
+On compare les data experimentales (d'un point de vue peptide) à un protéome de référence
 ```
 
 ##### Existe t’il d’autres types de bases de données pour réaliser l’identification des peptides trypsiques dans un spectre?
 
 ```
-
+Utiliser des bases de données spectrales pour faire des homologies.
 ```
 
 ##### Est-ce qu’il est possible d’identifier des peptides sans base de données?
@@ -90,7 +90,7 @@ Cette partie du TP est découpée en 4 grandes parties avec pour chacune des par
 ```
 ##### Pourquoi doit-on rajouter cette protéine dans le fichier FASTA final du protéome bactérien?
 ```
-
+Pour ne pas fausser les résultats - la trypsine est encore présente dans l'échantillon et donc elle doit être reconnu.
 ```
 
 ### Création de la « peak list »
