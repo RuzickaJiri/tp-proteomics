@@ -325,6 +325,7 @@ ax.plot(x, norm.pdf(x, mu, sqrt(S_2))*scale) # compute theoritical PDF and draw 
 ```
 
 ![Histogram](https://github.com/RuzickaJiri/tp-proteomics/blob/main/hist.png) 
+
 Superposition de l'histogramme et la loi de probabilité
 
 ##### 5. Quelles remarques peut-on faire à l'observation de l'histogramme et de loi théorique?
@@ -348,6 +349,7 @@ Sont condidérées comme surabondantes les proteines remplissant ces deux critè
 * <img src="https://render.githubusercontent.com/render/math?math=\text{p-value}>0.001">
 
 ![Volcano plot](https://github.com/RuzickaJiri/tp-proteomics/blob/main/volc.png) 
+
 Volcano plot
 
 ### Analyse Fonctionelle de pathway
