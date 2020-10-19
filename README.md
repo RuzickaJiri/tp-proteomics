@@ -37,13 +37,14 @@ Cette partie du TP est découpée en 4 grandes parties avec pour chacune des par
 ##### En quoi consiste l’approche Shotgun proteomics?
 
 ```
-Une approche bottom-up de la protéomique par spéctrométrie de masse.
+Approche bottom-up (on prend un échantillon et on le digère) qui permet d'identifier des protéines dans un contexte biologique, par spectrométrie de masse.
+Remarque : top-down = prendre l'échantillon et injecter au sein du MS, sans digestion.
 ```
 
 ##### Quel est l’objectif de cette approche ?
 
 ```
-Identifier des échantillons n'ayant pas la même origine (conditions différentes,...) dans le but d'identifier les bio-marquers.
+Identifier des échantillons n'ayant pas la même origine (conditions différentes,...) dans le but d'identifier les bio-marquers. 
 ```
 
 #### Procédure
@@ -59,22 +60,22 @@ Identifier des échantillons n'ayant pas la même origine (conditions différent
 ##### L’identification des protéines/ peptides se réalise grâce à une base de données de protéines. Quelle comparaison va être effectuée?
 
 ```
-On compare les data experimentales (d'un point de vue peptide) à un protéome de référence
+On compare les data experimentales (d'un point de vue peptide) à un protéome de référence (dans Uniprot).
 ```
 
 ##### Existe t’il d’autres types de bases de données pour réaliser l’identification des peptides trypsiques dans un spectre?
 
 ```
-Utiliser des bases de données spectrales pour faire des homologies.
+Utiliser des bases de données spectrales (à la place des données fasta qui permettent de simuler des spectres MS/MS) d'organismes proches puis faire des homologies.
 ```
 
 ##### Est-ce qu’il est possible d’identifier des peptides sans base de données?
 ```
-
+Oui
 ```
 ##### Combien de protéines sont identifiées dans le protéome bactérien?
 ```
-
+Nombre de protéines dans le fichier fasta récupéré : 4391
 ```
 ##### Comment la liste des séquences des protéines est-elle établie ? Est-elle complète? 
 ```
@@ -82,11 +83,12 @@ Utiliser des bases de données spectrales pour faire des homologies.
 ```
 ##### Quelle est la différence entre des séquences Swiss-prot et TremBL?
 ```
-
+Swiss-prot = bien annoté, à la main mais peu de protéines.
+TremBL = peu annoté, automatisé, mais beaucoup de protéines. 
 ```
 ##### A quoi correspond la protéine P00761 et quelle est sa fonction ? 
 ```
-
+C'est la trypsine : elle digère.
 ```
 ##### Pourquoi doit-on rajouter cette protéine dans le fichier FASTA final du protéome bactérien?
 ```
@@ -137,30 +139,33 @@ NB : si vous avez des messages d’erreur qui s’affichent (missing precursor c
 #### Questions 
 ##### Pourquoi est-il important de bien choisir sa base de données?
 ```
+Les résultats peuvent varier selon la base de données (pas reproductible).
 ```
 ##### Est-ce que l’on retrouvera toujours les mêmes protéines au cours du temps ?
 ```
+Non car les bases de données sont mises à jour régulièrement. Donc de nouvelles protéines vont être retrouvées.
 ```
-
 ##### Comment la taille de la base de données peut affecter le score de la protéine recherchée?
 ```
+Le score reflète la similarité entre les données théoriques et expérimentales. Plus la base est fournie, plus chaque peptide expérimental aura de chances de matcher avec un peptide théorique. Le score de la protéine s'en verra élevé.
 ```
-
 ##### Est-ce que les modifications ajoutées sont les seules modifications que l’on peut attendre dans une expérience de shotgun proteomics?
 ```
+Non, d'autres modifications sont possibles mais comme on ne s'attend pas à les retrouver. 
 ```
-
 ##### Vous avez choisi la trypsine comme enzyme et choisi « specific », qu’est-ce que cela signifie, et comment cela peut affecter le processing ? 
 ```
-```
 
+```
 ##### Qu’est-ce qu’un missed cleavage ? pourquoi 2 et pas 0 ?
 ```
+Il est possible que l'enzyme rate certains cleavage. 2 est choisi par défaut. 
 ```
 ##### Qu’est-ce que la tolérance en masse, comment la calcule-t-on ?
 ```
+C'est la différence de masse (ppm) que l'on tolère entre les données expérimentales et la masse du peptide théorique qui matche dans la banque.
+La tolérance de masse dépend de la résolution et de la qualité de la calibration.
 ```
-
 ### Visualisation des PSM, peptides - protéines
 
 Après avoir l’interrogation des données avec les moteurs de recherche, nous allons utiliser PeptideShaker pour identifier les peptides et protéines. Cliquer sur le fichier PeptideShaker-1.16.45.jar dans le dossier PeptideShaker-1.16.45. 
@@ -173,7 +178,9 @@ Input files :
 - Charger le fichier searchgui que vous avez généré 
 - Charger le fichier .mgf 
 - Charge la base de données FASTA
-
+```
+Le peptide shaker permet de visualiser graphiquement les protéines identifiées.
+```
 Enregistrer votre projet sous le nom que vous souhaitez (l’extension du fichier sera .cpsx)
 
 
@@ -301,7 +308,8 @@ Representer graphiquement les données d'abondance et construire la pvalue des f
 
 ##### 3. A partir de cette échantillon de ratio d'abondance,  estimez la moyenne <img src="https://render.githubusercontent.com/render/math?math=\mu"> et l'ecart-type <img src="https://render.githubusercontent.com/render/math?math=\sigma"> d'une loi normale.
 ```
-
+On suppose que l'estimation de la moyenne de la loi normale est la moyenne de l'échantillon. mean = -0.638
+On suppose que la var de loi normale est : var(ech)*n/n-1. ecart_type = 0.47 
 
 ```
 
@@ -321,7 +329,10 @@ ax.plot(x, norm.pdf(x, mu, sqrt(S_2))*scale) # compute theoritical PDF and draw 
 ##### 5. Quelles remarques peut-on faire à l'observation de l'histogramme et de loi théorique?
 
 ```
-
+Nos échantillons ne suivent pas vraiment une loi normale.
+Moyenne < 0 donc protéines moins abondantes dans l'expérience par rapport aux contrôles.
+Médiane > Moyenne donc on a plus de protéines au dessus de la moyenne qu'en dessous.
+Cela s'explique par la présence de la tétracycline qui perturbe l'action du ribosome donc perturbe la traduction = protéines trop petites, mal formées etc.
 
 ```
 
@@ -345,7 +356,7 @@ Nous allons implementer une approche ORA (Over Representation Analysis) naive.
 
 Quelles sont leurs identifiants UNIPROT ?
 ``` 
-
+'P0A8V6','P0A9Q1','P02358','P0ACF8','P62399','P0A905','P76506','P13036','P10384','P06971','P0A910', 'P06996','P76344','P02931'
 
 
 ```
