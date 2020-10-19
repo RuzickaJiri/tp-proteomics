@@ -324,7 +324,7 @@ scale = len(_)*dx # scale accordingly
 ax.plot(x, norm.pdf(x, mu, sqrt(S_2))*scale) # compute theoritical PDF and draw it
 ```
 
-![Histogramme à inserez ici](histogram_log2FC.png "Title")
+!C:\Users\Jirkův NB\Documents\INSA\5A\Proteo\hist2.png "Superposition de l'histogramme et la loi de probabilité"
 
 ##### 5. Quelles remarques peut-on faire à l'observation de l'histogramme et de loi théorique?
 
